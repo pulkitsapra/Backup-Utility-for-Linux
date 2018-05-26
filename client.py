@@ -2,13 +2,14 @@ import socket
 import os
 import subprocess
 from optparse import OptionParser
-from random import randint
+from random import randint 
 # parser = OptionParser()
 # parser.add_option("-x", dest="ip")
 # options, parser = parser.parse_args()
 # host_ip = str(options.ip)
+#host_ip='192.168.43.123'
 host_ip='192.168.43.123'
-
+port =10106
 def random_with_N_digits(n):
     range_start = 10**(n-1)
     range_end = (10**n)-1
@@ -32,7 +33,7 @@ subprocess.call(["bash","keygen.sh"])
 
 s = socket.socket()
 
-port =10103
+
 # host_ip = socket.gethostbyname('www.google.com')
 try:
 	s.connect((host_ip,port))
@@ -58,17 +59,26 @@ while(l):
 # 	print err
 
 
-client_id=s.recv(1024)
-data=s.recv(1024)
-ip=s.recv(1024)
-print  data,
-print  ip,
-# print  data,'\n'
+# data=s.recv(1024)
+try:
+    client_id=s.recv(1024)
+    data=s.recv(10)
+    ip=s.recv(24)
+    print  client_id,
+    print  data, ip
+except:
+    print "An Unknown Error Occurred!"
+
+# print  client_id,
+
 f.close()
 with open('/Users/pulkit/Desktop/sysproj/backup_dir.txt','w') as the_file:
-   # the_file.write(client_id)
-    the_file.write(ip)
+    the_file.write(client_id)
+    the_file.write('\n')
     the_file.write(data)
+    the_file.write('\n')
+    the_file.write(ip)
+    the_file.write('\n')
 f.close()
 
 

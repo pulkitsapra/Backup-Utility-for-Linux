@@ -4,11 +4,15 @@ date=`date "+%Y-%m-%dT%H:%M:%S"`
 # done <backup_dir.txt
 
 IFS=$'\n' read -d '' -r -a lines < backup_dir.txt
-ip=${lines[0]}
+client_id=${lines[0]}
 dest=${lines[1]}
+ip=${lines[2]}
+echo $client_id
 echo $ip
 echo $dest
-# while read path;do
-# 	rsync -avzP $path  dlgroup4@40.115.126.22:~/$date
+while read -r line
+do
+	 rsync -e "ssh -o StrictHostKeyChecking=no" -avzP $line  $client_id@$ip:$dest/$date
+	# echo $line
 
-# done<backup_files.txt
+done<backup_files.txt

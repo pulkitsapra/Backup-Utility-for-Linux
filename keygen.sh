@@ -12,12 +12,11 @@ then
 		ssh-keygen -t rsa -N "" -f id_rsa 
 		chmod 600 ~/.ssh/id_rsa
 		chmod 600 ~/.ssh/id_rsa.pub
+		ssh-add -K ~/.ssh/id_rsa
 		echo "key generated"
 	else
 		echo "copying existing key from .ssh"
 	fi
-	#Press Enters 
-	#eval `ssh-agent -s`
 
 	#adds private key identities to the authentication agent
 	#ssh-add ~/.ssh/$client_id

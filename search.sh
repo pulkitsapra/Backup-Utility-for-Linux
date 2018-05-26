@@ -1,9 +1,8 @@
 #!/bin/sh
-cd ~/Desktop/sysproj
 array=($(ls -d */))
+#echo $array
 for (( idx=${#array[@]}-1 ; idx>=0 ; idx-- )) ; do
-    #echo "${array[idx]}"
-    a=($(find ${array[idx]} -type f -name 'LF*'| egrep '.*'))
+    a=($(find ${array[idx]} -type f -name $1| egrep '.*'))
     if [ $? -eq 0 ];then			    
     	    echo $a
 	    break;
