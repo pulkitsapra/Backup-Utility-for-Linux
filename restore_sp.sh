@@ -6,6 +6,7 @@ IFS=$'\n' read -d '' -r -a lines < backup_dir.txt
 client_id=${lines[0]}
 dest=${lines[1]}
 ip=${lines[2]}
+echo $2
 
 #1 : date from which you want to restore the backup
 #2 : name of the file
@@ -21,4 +22,3 @@ do
 done<b.txt
 
 
-# rsync -avzP --stats $client_id@$ip:$a $3

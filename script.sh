@@ -1,7 +1,7 @@
 #!bin/bash
-SERVER_ADDR='192.168.4.123'
+SERVER_ADDR='192.168.43.123'
 
-ssh ~/Desktop/IMG_0199 sanidhya@192.168.43.123:/home/sanidhya/Desktop/
+# ssh ~/Desktop/IMG_0199 sanidhya@192.168.43.123:/home/sanidhya/Desktop/
 
 while read p;do
 	ssh -o PasswordAuthentication=no  -o BatchMode=yes -o StrictHostKeyChecking=no sanidhya@$p exit &>/dev/null

@@ -4,8 +4,9 @@ IFS=$'\n' read -d '' -r -a lines < backup_dir.txt
 client_id=${lines[0]}
 dest=${lines[1]}
 ip=${lines[2]}
+echo $1
 
-ssh "$client_id"@"$ip" "bash -s " $1 -- < search.sh > a.txt
+ssh "$client_id"@"$ip" "bash -s " "$1" -- < search.sh > a.txt
 
 
 
