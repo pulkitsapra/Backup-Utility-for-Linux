@@ -4,8 +4,12 @@ import subprocess
 from optparse import OptionParser
 from random import randint 
 
+# The Manager Address and port 
+
 host_ip='192.168.43.123'
 port =10106
+
+# Generates a random number say xxxx then its client id becomes 'clxxxx' and home directory made at the server as '/home/clxxxx' with permissions 700
 def random_with_N_digits(n):
     range_start = 10**(n-1)
     range_end = (10**n)-1
@@ -14,8 +18,7 @@ def random_with_N_digits(n):
 id=random_with_N_digits(4)
 id="cl"+ str(id)
 
-
-
+# Looks for a public key in .ssh folder if temp.pub not present. If not found generates a ssh public private key and sends it to manager which then copies it to the server
 subprocess.call(["bash","keygen.sh"])
 
 
@@ -48,6 +51,8 @@ except:
     print "An Unknown Error Occurred!"
 
 f.close()
+
+# Writes the parameters of client in the file 'backup_dir.txt'
 with open('backup_dir.txt','w') as the_file:
     the_file.write(client_id)
     the_file.write('\n')
