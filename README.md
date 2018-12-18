@@ -1,5 +1,8 @@
 # Backup-Utility-for-Linux
 
+This utility is built on the top of rsync to implement periodic incremental backups for every date. One can also restore latest/ a specific version of a particular file using the same package.
+
+
 //Steps to run the code
 
 
